@@ -18,9 +18,9 @@ let btnEmpezar = document.querySelector("#btnEmpezar");
 btnEmpezar.addEventListener("click", mostrarContenido);
 
 function mostrarContenido() {
-    let okTiempo;
+    
     let okInput;
-
+    let okTiempo;
     let tiempo = parseInt(inTiempo.value);
     if (isNaN(tiempo) || tiempo < 1) {
         okInput = false;
@@ -29,13 +29,22 @@ function mostrarContenido() {
     }
 
     if (okInput == true) {
-        okTiempo = confirm("El tiempo introducido es: " + inTiempo.value + ", correcto?");
+        let msg = "El tiempo introducido es: " + inTiempo.value + ", correcto?";
+        if (confirm(msg) == true){
+            okTiempo = true;
+            btnEmpezar.style.display = "none";
+        } else {
+            okTiempo = false;
+        }
     } else {
         alert("Debes introducir un tiempo válido para empezar.");
     }
-
-    if (okTiempo == true){
-        btnEmpezar.disable = true;
-    }
+    
+    /*if (okInput == true){
+        return okTiempo;        
+    } else {
+        return okInput;
+    }*/
+    
 
 }

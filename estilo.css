@@ -1,0 +1,15 @@
+input:focus:valid {
+	background-image: url(/imgs/valid.png);
+	background-repeat: no-repeat;
+	background-position-x: right;
+}
+
+input:focus:invalid {
+	background-image: url(/imgs/novalid.png);
+	background-repeat: no-repeat;
+	background-position-x: right;
+}
+
+input:required {
+	background-color: rgba(194, 187, 185, 0.425);
+}
