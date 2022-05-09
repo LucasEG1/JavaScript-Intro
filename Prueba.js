@@ -5,39 +5,38 @@ function agregarUno() {
     this.innerHTML ++;
 }
 
-let inTiempo = document.querySelector("#tiempo");
+let inTiempo = document.querySelector("#inTiempo");
 inTiempo.addEventListener("input", validarInput);
 
-function validarInput(event){
-    //VALIDAR INPUT DEBE MODIFICAR SI ES CORRECTO O NO CON CSS (como el ultimo form)
-   
-    
+function validarInput() {
+    //handle CSS here
 }
 
 let btnEmpezar = document.querySelector("#btnEmpezar");
-btnEmpezar.addEventListener("click", mostrarContenido);
+btnEmpezar.addEventListener("click", iniciarClicker);
 
-function mostrarContenido() {
+function iniciarClicker() {
     
     let okInput;
     let okTiempo;
-    let tiempo = parseInt(inTiempo.value);
-    if (isNaN(tiempo) || tiempo < 1) {
+    let tiempoTotal = parseInt(inTiempo.value);
+    if (isNaN(tiempoTotal) || tiempoTotal < 1) {
         okInput = false;
     } else {
         okInput = true;
     }
 
     if (okInput == true) {
-        let msg = "El tiempo introducido es: " + inTiempo.value + ", correcto?";
+        let msg = "El tiempoTotal introducido es: " + inTiempo.value + ", correcto?";
         if (confirm(msg) == true){
             okTiempo = true;
-            btnEmpezar.style.display = "none";
+            //btnEmpezar.style.display = "none";
+            cuentaAtras();
         } else {
             okTiempo = false;
         }
     } else {
-        alert("Debes introducir un tiempo válido para empezar.");
+        alert("Debes introducir un tiempoTotal válido para empezar.");
     }
     
     /*if (okInput == true){
@@ -46,5 +45,22 @@ function mostrarContenido() {
         return okInput;
     }*/
     
+}
 
+function cuentaAtras() {
+    let tiempoTotal = parseInt(inTiempo.value);
+    let segs = document.querySelector("#contador");
+
+    for (let i = tiempoTotal; i >= 0; i--) {
+        
+        function cambiarTiempo(){
+            
+            for (let i = tiempoTotal; i >= 0; i--) {
+                segs.innerHTML = i;
+                console.log(i);
+            }
+            
+        }
+        setInterval(cambiarTiempo, 1000);
+    }
 }
