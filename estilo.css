@@ -1,4 +1,4 @@
-input:focus:valid {
+/*input:focus:valid {
 	background-image: url(/imgs/valid.png);
 	background-repeat: no-repeat;
 	background-position-x: right;
@@ -12,4 +12,4 @@ input:focus:invalid {
 
 input:required {
 	background-color: rgba(194, 187, 185, 0.425);
-}
+}*/
