@@ -1,66 +1,67 @@
+/*VARIABLES*/ /*VARIABLES*//*VARIABLES*//*VARIABLES*//*VARIABLES*/
+/*VARIABLES*//*VARIABLES*//*VARIABLES*//*VARIABLES*//*VARIABLES*/
+/*VARIABLES*//*VARIABLES*//*VARIABLES*//*VARIABLES*//*VARIABLES*/
 let cajaClicks = document.querySelector("#cajaClicks");
-cajaClicks.addEventListener("click", agregarUno);
-
-function agregarUno() {
-    this.innerHTML ++;
-}
-
-let inTiempo = document.querySelector("#inTiempo");
-inTiempo.addEventListener("input", validarInput);
-
-function validarInput() {
-    //handle CSS here
-}
 
 let btnEmpezar = document.querySelector("#btnEmpezar");
-btnEmpezar.addEventListener("click", iniciarClicker);
+btnEmpezar.addEventListener("click", inicializarCuentaAtras);
 
-function iniciarClicker() {
-    
-    let okInput;
-    let okTiempo;
-    let tiempoTotal = parseInt(inTiempo.value);
-    if (isNaN(tiempoTotal) || tiempoTotal < 1) {
-        okInput = false;
-    } else {
-        okInput = true;
-    }
+let dispHora = document.querySelector("#displayHora");
 
-    if (okInput == true) {
-        let msg = "El tiempoTotal introducido es: " + inTiempo.value + ", correcto?";
-        if (confirm(msg) == true){
-            okTiempo = true;
-            //btnEmpezar.style.display = "none";
-            cuentaAtras();
-        } else {
-            okTiempo = false;
-        }
-    } else {
-        alert("Debes introducir un tiempoTotal válido para empezar.");
-    }
-    
-    /*if (okInput == true){
-        return okTiempo;        
-    } else {
-        return okInput;
-    }*/
-    
+
+
+/*FUNCIONES*//*FUNCIONES*//*FUNCIONES*//*FUNCIONES*//*FUNCIONES*/
+/*FUNCIONES*//*FUNCIONES*//*FUNCIONES*//*FUNCIONES*//*FUNCIONES*/
+/*FUNCIONES*//*FUNCIONES*//*FUNCIONES*//*FUNCIONES*//*FUNCIONES*/
+function permitirClicks() {cajaClicks.addEventListener("click", agregarUno)};
+
+function restringirClicks() {cajaClicks.removeEventListener("click", agregarUno)};
+
+window.onload = mostrarFecha();
+window.onload = restringirClicks();
+
+function mostrarFecha() {
+    const thisdate = new Date();
+    let seg = thisdate.getSeconds();
+    let min = thisdate.getMinutes();
+    let hora = thisdate.getHours();
+    let horaActual = hora + " : " + min + " : " + seg;
+
+    dispHora.innerHTML = "Son las " + horaActual;
+    setTimeout(mostrarFecha, 500);
+
 }
 
-function cuentaAtras() {
-    let tiempoTotal = parseInt(inTiempo.value);
-    let segs = document.querySelector("#contador");
+function agregarUno() {
+    this.innerHTML++;
+    this.value++;
+}
 
-    for (let i = tiempoTotal; i >= 0; i--) {
-        
-        function cambiarTiempo(){
-            
-            for (let i = tiempoTotal; i >= 0; i--) {
-                segs.innerHTML = i;
-                console.log(i);
-            }
-            
+function inicializarCuentaAtras() {
+    btnEmpezar.disabled = true;
+    permitirClicks();
+    let tiempoTotal = parseInt(inTiempo.value);
+    let segs = document.querySelector("#tiempoRestante");
+    segs.innerHTML = tiempoTotal;
+    let cuentaAtras = setInterval(function () {
+        if (tiempoTotal <= 1) {
+            clearInterval(cuentaAtras);
+            restringirClicks();
+            mostrarPuntuacion();
+            btnEmpezar.disabled = false;
+            segs.innerHTML = "⬆⬆ Selecciona un tiempo para empezar";
+        } else {
+        tiempoTotal --;
+        segs.innerHTML = tiempoTotal; //muestra el tiempo restante cada segundo que pasa
         }
-        setInterval(cambiarTiempo, 1000);
-    }
+    }, 1000);
+
+}
+function mostrarPuntuacion() {
+    let clicks = parseInt(cajaClicks.value);
+    let tiempo = parseInt(inTiempo.value);
+
+    alert("El tiempo ha acabado! Conseguiste " + clicks + " clicks en " + tiempo + " segundos, con una media de " + clicks/tiempo + " clicks por segundo.");
+    cajaClicks.value = 0;
+    cajaClicks.innerHTML = 0;
 }

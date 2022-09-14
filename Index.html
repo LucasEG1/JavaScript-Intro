@@ -10,37 +10,67 @@
   <link rel="shortcut icon" href="https://aprendejavascript.org/assets/favicon.png" type="image/png"/> <!-- FAVICON -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
- </head>
- <style>
-   #contenedor {
-       background-color: beige;
-   }
- </style>
+</head>
+<style>
+  
+</style>
 <body>
+  <div class="container-fluid m-3 row" id="contenedor">
+    <div id="main" class="col-sm-12 col-lg-10">
+      <div class="display-2">¡Bienvenid@ a mi primera página!</div>
 
-    <div class="container-fluid m-3" id="contenedor">
-        <div class="display-2">¡Bienvenid@ a mi primera página!</div>
-        <code style="font-weight: bold; color: red;">Nota: Esta página se ha creado utilizando HTML5, Bootstrap 5, CSS3 (WIP) y JavaScript.</code>
-        <br>
-        <div>
-          <label for="tiempo">tiempo</label> <br>
-          <input type="number" min="1" id="inTiempo" required>
-        </div>
-        <div class="btn rounded-pill bg-warning text-dark" id="btnEmpezar">Haz click para empezar</div>
-        <br>
-        <p id="contador">9</p>
+      <code style="font-weight: bold; color: red;">Nota: Esta página se ha creado utilizando HTML5, Bootstrap 5, CSS3 (WIP) y JavaScript.</code>
 
-        <!--Div contador de clicks-->
-        <div id="cajaClicks" style="font-size: 60px; text-align: center; height: 300px; width: 100%; border: 1px solid black; background-color: aquamarine;">0</div>
+      <div class="mt-3">
+        <label for="tiempo">Tiempo de tu desafío: </label>
+        <select id="inTiempo" name="contador">
+          <option value="1">1 segundo</option>
+          <option value="2">2 segundos</option>
+          <option value="5">5 segundos</option>
+          <option value="10">10 segundos</option>
+          <option value="30">30 segundos</option>
+        </select>
+      </div>
 
-        <hr>
+      <button class="btn rounded-pill bg-warning text-dark my-3" id="btnEmpezar">Haz click para empezar</button>
+      <br>
+      <b class="display-6 my-auto" id="tiempoRestante">⬆⬆ Selecciona un tiempo para empezar</b>
 
-        <div class="container m-3" id="displayHour">
-          <div class="display-3">[Hora acá]</div>
-        </div>
+      <!--area de conteo de clicks-->
+      <button id="cajaClicks" class="btn btn-success w-100 mt-3" value="0">0</button>
 
+      <hr>
+
+      <div class="container m-3" id="displayHour">
+        <div class="display-5" id="displayHora"></div>
+      </div>
     </div>
+    <div class="containter-fluid col-lg-2" id="publicidad">
+        <div>
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+          Espacio reservado para publicidad
+        </div>
+      </div>
+    </div>
+    
     <script src="/Prueba.js"></script>
 </body>
 </html>

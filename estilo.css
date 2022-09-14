@@ -1,15 +1,10 @@
-/*input:focus:valid {
-	background-image: url(/imgs/valid.png);
-	background-repeat: no-repeat;
-	background-position-x: right;
+#cajaClicks {
+    height: 300px;
+    font-size: 60px;
 }
-
-input:focus:invalid {
-	background-image: url(/imgs/novalid.png);
-	background-repeat: no-repeat;
-	background-position-x: right;
+#contenedor {
+    background-color: beige;
 }
-
-input:required {
-	background-color: rgba(194, 187, 185, 0.425);
-}*/
+#publicidad {
+    border: 3px solid rgba(7, 212, 161, 0.75);
+}
